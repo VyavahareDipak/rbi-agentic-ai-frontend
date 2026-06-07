@@ -1,0 +1,68 @@
+<div class="chat-container">
+  
+  <div class="chat-header">
+    <h1>How can I help analyze RBI complaint data today?</h1>
+    <div class="suggestion-chips">
+      <button class="chip" (click)="setSuggestion('UPI complaints trend (Q3)')">↗ UPI complaints trend (Q3)</button>
+      <button class="chip" (click)="setSuggestion('Bank-wise escalations')">🏛️ Bank-wise escalations</button>
+      <button class="chip" (click)="setSuggestion('Fraud pattern detection')">⚠️ Fraud pattern detection</button>
+    </div>
+  </div>
+
+  <div class="chat-history" #chatScrollContainer>
+    
+    <div *ngFor="let msg of messages" class="message" [ngClass]="msg.role === 'user' ? 'user-message' : 'ai-message'">
+      
+      <p *ngIf="msg.role === 'user'">{{ msg.text }}</p>
+
+      <ng-container *ngIf="msg.role === 'ai'">
+        <div class="ai-avatar">🤖</div>
+        
+        <div class="ai-card">
+          <div class="card-header" *ngIf="msg.confidence">
+            <span class="result-label">ANALYSIS RESULT</span>
+            <span class="confidence-badge">CONFIDENCE: {{ msg.confidence }}%</span>
+            <span class="time-label">Processed in {{ msg.processTime }}</span>
+          </div>
+
+          <p class="ai-text" [innerHTML]="msg.text"></p>
+
+          <div class="kpi-grid" *ngIf="msg.kpis && msg.kpis.length > 0">
+            <div *ngFor="let kpi of msg.kpis" class="kpi-box" [ngClass]="{'border-warning': kpi.isWarning}">
+              <div class="kpi-title">{{ kpi.title }}</div>
+              <div class="kpi-value">{{ kpi.value }}</div>
+              <div class="kpi-trend" [ngClass]="kpi.trendType">{{ kpi.trendText }}</div>
+            </div>
+          </div>
+
+          <div class="code-container" *ngIf="msg.sqlQueryHtml">
+            <div class="code-header">GENERATED SQL QUERY</div>
+            <pre><code [innerHTML]="msg.sqlQueryHtml"></code></pre>
+          </div>
+
+          <div class="reference-card" *ngIf="msg.referenceDoc">
+            <div class="doc-icon">📄</div>
+            <div class="doc-info">
+              <h4>{{ msg.referenceDoc.title }}</h4>
+              <p>{{ msg.referenceDoc.ref }}</p>
+              <a [href]="msg.referenceDoc.link">VIEW FULL CIRCULAR ↗</a>
+            </div>
+          </div>
+
+        </div>
+      </ng-container>
+    </div>
+  </div>
+
+  <div class="input-area">
+    <div class="input-wrapper">
+      <button class="icon-btn">📎</button>
+      <input type="text" 
+             [(ngModel)]="userInput" 
+             (keyup.enter)="sendMessage()" 
+             placeholder="Ask about bank compliance, circulars, or trends..." />
+      <button class="icon-btn">🎤</button>
+      <button class="send-btn" (click)="sendMessage()">↑</button>
+    </div>
+  </div>
+</div>

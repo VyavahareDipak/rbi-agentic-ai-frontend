@@ -1,0 +1,9 @@
+.assistant-layout {
+  display: grid;
+  grid-template-columns: 1fr 320px; /* Center Chat, Right Sidebar */
+  height: 100%;
+}
+.activity-section {
+  background-color: var(--bg-sidebar);
+  border-left: 1px solid var(--border-color);
+}

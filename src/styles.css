@@ -1,1 +1,36 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  /* RBI Dark Theme Palette */
+  --bg-main: #0B0E14;
+  --bg-sidebar: #10141D;
+  --bg-panel: #151B26;
+  --bg-input: #1C2333;
+  --bg-user-bubble: #6495ED; /* Bright Blue */
+  --bg-ai-bubble: #151B26;
+  
+  --text-primary: #FFFFFF;
+  --text-secondary: #94A3B8;
+  --text-muted: #64748B;
+  
+  --accent-teal: #2DD4BF;
+  --accent-blue: #3B82F6;
+  --accent-red: #F87171;
+  --border-color: rgba(255, 255, 255, 0.08);
+  
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  height: 100vh;
+  overflow: hidden;
+}
+
+* { box-sizing: border-box; }
+
+/* Scrollbar styling */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--bg-input); border-radius: 4px; }

@@ -1,0 +1,53 @@
+.sidebar-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 24px 20px;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 40px;
+}
+.brand-text { display: flex; flex-direction: column; }
+.title { font-size: 24px; font-weight: 700; letter-spacing: -0.5px; }
+.subtitle { font-size: 24px; font-weight: 700; color: #8A92A6; margin-top: -6px; }
+
+.new-task-btn {
+  background: #E2E8F0;
+  color: #0F172A;
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.nav-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex-grow: 1;
+}
+.nav-item {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 12px 16px;
+  border-radius: 6px;
+  letter-spacing: 0.5px;
+}
+.nav-item.active {
+  background-color: rgba(45, 212, 191, 0.1);
+  color: var(--accent-teal);
+  border-left: 3px solid var(--accent-teal);
+}
+.bottom-links { margin-top: auto; display: flex; flex-direction: column; gap: 8px;}
